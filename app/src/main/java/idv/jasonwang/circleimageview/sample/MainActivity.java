@@ -20,8 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Bitmap bitmap = ImageUtils.compressBySize(this, R.drawable.test, 200, 200);
-        Log.d("TAG", String.format("Bitmap Width:%d Height:%d", bitmap.getWidth(), bitmap.getHeight()));
+        Bitmap bitmap = ImageCompressUtils.compressBySize(this, R.drawable.test_large, 1000, 1000);
 
         ((ImageView) findViewById(R.id.imageView)).setImageBitmap(bitmap);
     }

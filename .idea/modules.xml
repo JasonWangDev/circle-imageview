@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/circle-imageview.iml" filepath="$PROJECT_DIR$/circle-imageview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/circle-imageview-library/circle-imageview-library.iml" filepath="$PROJECT_DIR$/circle-imageview-library/circle-imageview-library.iml" />
       <module fileurl="file://$PROJECT_DIR$/circle-imageview-library/circle-imageview-library.iml" filepath="$PROJECT_DIR$/circle-imageview-library/circle-imageview-library.iml" />
       <module fileurl="file://$PROJECT_DIR$/circle-imageview-sample.iml" filepath="$PROJECT_DIR$/circle-imageview-sample.iml" />
     </modules>

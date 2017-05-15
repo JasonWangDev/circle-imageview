@@ -3,7 +3,6 @@ package idv.jasonwang.circleimageview.sample;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -12,11 +11,18 @@ import java.io.InputStream;
 /**
  *
  * 參考文獻:
- * http://blog.csdn.net/wurensen/article/details/11787307
+ *  ．Android对图片进行压缩
+ *      http://blog.csdn.net/wurensen/article/details/11787307
+ *
+ * ．Android Bitmap面面观
+ *　 http://jayfeng.com/2016/03/22/Android-Bitmap%E9%9D%A2%E9%9D%A2%E8%A7%82/
+ *
+ * ．Loading same image in jpg and png results in different bitmap size
+ *     http://stackoverflow.com/questions/17073812/loading-same-image-in-jpg-and-png-results-in-different-bitmap-size
  *
  * Created by jason on 2017/5/15.
  */
-public class ImageUtils {
+public class ImageCompressUtils {
 
     public static Bitmap compressBySize(Context context, int res, int targetWidth, int targetHeight) {
         BitmapFactory.Options options = new BitmapFactory.Options();
@@ -27,13 +33,11 @@ public class ImageUtils {
         // 不載入圖片，僅讀取圖片資訊(寬、高)
         options.inJustDecodeBounds = true;
 
-        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), res, options);
+        BitmapFactory.decodeResource(context.getResources(), res, options);
 
         // 取得原始圖片大小
         int originalWidth = options.outWidth;
         int originalHeight = options.outHeight;
-
-        Log.d("TAG", String.format("Bitmap originalWidth:%d originalHeight:%d", originalWidth, originalHeight));
 
         // 計算縮比例
         int scaleWidth = targetWidth > 0 ? (int) Math.ceil(originalWidth / (float) targetWidth) : 0;
@@ -42,16 +46,13 @@ public class ImageUtils {
         // 取得最大縮放比
         int maxScale = Math.max(scaleWidth, scaleHeight);
 
-        Log.d("TAG", "maxScale : " + maxScale);
-
         // 設定圖片縮放比例
         options.inSampleSize = maxScale;
 
         // 開始載入圖片
         options.inJustDecodeBounds = false;
 
-        // 釋放資源
-        recycleBitmap(bitmap);
+        BitmapFactory.decodeResource(context.getResources(), res, options);
 
         // 回傳壓縮後的 Bitmap 物件
         return BitmapFactory.decodeResource(context.getResources(), res, options);
