@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Bitmap bitmap = ImageCompressUtils.compressBySize(this, R.drawable.test_large, 1000, 1000);
+        Bitmap bitmap = ImageCompressUtils.compressBySize(this, R.drawable.test, 1000, 1000);
 
-        ((ImageView) findViewById(R.id.imageView)).setImageBitmap(bitmap);
+        ((ImageView) findViewById(R.id.imageView)).setImageBitmap(getCroppedBitmap(bitmap));
     }
 
 
@@ -36,51 +36,29 @@ public class MainActivity extends AppCompatActivity {
         final Paint paint = new Paint();
         final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
 
+        int centX = bitmap.getWidth() / 2;
+        int centY = bitmap.getHeight() / 2;
+
+        int radio = Math.min(centX, centY);
+
         paint.setAntiAlias(true);
         canvas.drawARGB(0, 0, 0, 0);
         paint.setColor(color);
         // canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
-        canvas.drawCircle(500, 500, 500, paint);
+        canvas.drawCircle(centX, centY, radio, paint);
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, rect, rect, paint);
         //Bitmap _bmp = Bitmap.createScaledBitmap(output, 60, 60, false);
         //return _bmp;
 
-        paint.setXfermode(null);
         paint.setStyle(Paint.Style.STROKE);
         paint.setColor(Color.WHITE);
         paint.setAntiAlias(true);
+        paint.setDither(true);
         paint.setStrokeWidth(5f);
-//        paint.setStrokeWidth(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics()));
-        canvas.drawCircle(500, 500, 450, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
 
-        return output;
-    }
-
-    public static Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
-        int w = bitmap.getWidth();
-        int h = bitmap.getHeight();
-
-        int radius = Math.min(h / 2, w / 2);
-        Bitmap output = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-
-        Paint p = new Paint();
-        p.setAntiAlias(true);
-
-        Canvas c = new Canvas(output);
-        c.drawARGB(0, 0, 0, 0);
-        p.setStyle(Paint.Style.FILL);
-
-        c.drawCircle((w / 2), (h / 2), radius, p);
-
-        p.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-
-        c.drawBitmap(bitmap, 2, 1, p);
-        p.setXfermode(null);
-        p.setStyle(Paint.Style.STROKE);
-        p.setColor(Color.WHITE);
-        p.setStrokeWidth(3);
-        c.drawCircle((w / 2) + 4, (h / 2) + 4, radius, p);
+        canvas.drawCircle(centX, centY, radio - 2.5f, paint);
 
         return output;
     }
