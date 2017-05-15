@@ -24,7 +24,6 @@ public class ImageUtils {
         // 不設置圖片的縮放(如果自動進行縮放，最後壓縮的大小會被裝置的解析度影響)
         // http://stackoverflow.com/questions/5128185/bitmap-width-height-different-after-loading-from-resource
         options.inScaled = false;
-
         // 不載入圖片，僅讀取圖片資訊(寬、高)
         options.inJustDecodeBounds = true;
 
