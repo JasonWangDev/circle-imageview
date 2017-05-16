@@ -1,1 +1,1 @@
-include ':app', ':circle-imageview-library'
+include ':app', ':image-utils-library'

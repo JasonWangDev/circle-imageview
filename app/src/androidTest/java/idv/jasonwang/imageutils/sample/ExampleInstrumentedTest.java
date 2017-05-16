@@ -1,4 +1,4 @@
-package idv.jasonwang.circleimageview;
+package idv.jasonwang.imageutils.sample;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("idv.jasonwang.circleimageview.test", appContext.getPackageName());
+        assertEquals("idv.jasonwang.circleimageview.sample", appContext.getPackageName());
     }
 }

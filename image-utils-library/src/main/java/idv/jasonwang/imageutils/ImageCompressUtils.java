@@ -1,4 +1,4 @@
-package idv.jasonwang.circleimageview.sample;
+package idv.jasonwang.imageutils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
+ *圖片壓縮工具類
  *
  * 參考文獻:
  *  ．Android对图片进行压缩

@@ -1,4 +1,4 @@
-package idv.jasonwang.circleimageview;
+package idv.jasonwang.imageutils;
 
 import org.junit.Test;
 
